@@ -18,68 +18,24 @@ AMS_mana_events.001 = {
 	hidden = yes
 	immediate = {
 		if = {
-		#conditions
-			limit = {
-				has_trait = mana
-			}
-		#set mana variable
-			if = {
-				limit = {
-					NOT = { exists = var:mana }
-				}
-				set_variable = {
-					name = mana
-					value = 0
-				}
-				
-			}
-		#set max mana variable
-			if = {
-				limit = {
-					NOT = { exists = var:max_mana }
-				}
-				set_variable = {
-					name = max_mana
-					value = 0
-				}
-			}
-		#set mana gen variable
-			if = {
-				limit = {
-					NOT = { exists = var:mana_gen }
-				}
-				set_variable = {
-					name = mana_gen
-					value = 0
-				}
-			}
-		#change mana
-			change_mana = { VALUE = var:mana_gen }
-		#check against max mana
-			if = {
-				limit = {
-					var:mana > var:max_mana
-				}
+			limit = { has_trait = mana }
+			change_mana = { VALUE = var:mana_gen } #change mana
+			if = { #check against max mana
+				limit = { var:mana.compare_value > var:max_mana.compare_value }
 				set_variable = {
 					name = mana
 					value = var:max_mana
 				}
 			}
-		#check for negative mana
-			if = {
-				limit = {
-					var:mana < 0
-				}
+			if = { #check for negative mana
+				limit = { var:mana.compare_value < 0 }
 				set_variable = {
 					name = mana
 					value = 0
 				}
 			}
-		#Infinite mana trait
-			if = {
-				limit = {
-					has_trait = infinite_mana
-				}
+			if = { #Infinite mana trait
+				limit = { has_trait = infinite_mana }
 				set_variable = {
 					name = max_mana
 					value = 999999
