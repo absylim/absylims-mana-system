@@ -1,4 +1,6 @@
 ﻿quarterly_playable_pulse = {
+	trigger = { has_trait = mana }
+
 	events = {
 		AMS_mana_events.001
 		delay = { months = 1 }

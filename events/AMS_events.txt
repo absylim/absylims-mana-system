@@ -1,50 +1,47 @@
 ﻿namespace = AMS_mana_events
 
-AMS_mana_events.manacheat = {
+AMS_mana_events.001 = {
+	hidden = yes
+	immediate = {
+		change_mana = { VALUE = var:mana_gen } #change mana
+		if = { #check against max mana
+			limit = { var:mana.compare_value > var:max_mana.compare_value }
+			set_variable = {
+				name = mana
+				value = var:max_mana
+			}
+		}
+		if = { #check for negative mana
+			limit = { var:mana.compare_value < 0 }
+			set_variable = {
+				name = mana
+				value = 0
+			}
+		}
+		if = { #Infinite mana trait
+			limit = { has_trait = infinite_mana }
+			set_variable = {
+				name = max_mana
+				value = 999999
+			}
+			set_variable = {
+				name = mana
+				value = var:max_mana
+			}
+		}
+	}
+}
+
+AMS_mana_events.002 = {
 	hidden = yes
 	immediate = {
 		change_mana = { VALUE = 1000 }
 	}
 }
 
-AMS_mana_events.minusmanacheat = {
+AMS_mana_events.003 = {
 	hidden = yes
 	immediate = {
 		change_mana = { VALUE = -1000 }
-	}
-}
-
-AMS_mana_events.001 = {
-	hidden = yes
-	immediate = {
-		if = {
-			limit = { has_trait = mana }
-			change_mana = { VALUE = var:mana_gen } #change mana
-			if = { #check against max mana
-				limit = { var:mana.compare_value > var:max_mana.compare_value }
-				set_variable = {
-					name = mana
-					value = var:max_mana
-				}
-			}
-			if = { #check for negative mana
-				limit = { var:mana.compare_value < 0 }
-				set_variable = {
-					name = mana
-					value = 0
-				}
-			}
-			if = { #Infinite mana trait
-				limit = { has_trait = infinite_mana }
-				set_variable = {
-					name = max_mana
-					value = 999999
-				}
-				set_variable = {
-					name = mana
-					value = var:max_mana
-				}
-			}
-		}
 	}
 }
