@@ -1,12 +1,13 @@
-change_mana = {
-	if = {
-		limit = { NOT = { exists = var:mana } }
-		set_variable = {
-			name = mana
-			value = 0
+﻿change_mana = {
+	set_variable = {
+		name = mana
+		value = {
+			value = var:mana
+			add = $VALUE$
+			max = var:max_mana
+			min = 0
 		}
 	}
-	change_variable = { name = mana add = $VALUE$ }
 }
 
 change_mana_gen = {
