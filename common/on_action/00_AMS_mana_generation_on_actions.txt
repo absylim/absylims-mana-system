@@ -11,6 +11,12 @@
 }
 
 # Fire this action to make updates to the player's mana and mana gen
+# Some on_actions (specifically on_title_gained, among others) don't
+# fire triggered events immediately, they register them to be fired
+# on the next tick (day). If we reset max_mana to 0 and then clamp
+# to max_mana during one of those on_actions, it will always clamp
+# to 0, because the reset doesn't take place immediately - it takes
+# place the next day.
 on_reset_mana_system = {
 	trigger = { has_trait = mana }
 
@@ -28,7 +34,7 @@ on_reset_mana_system = {
 			name = mana
 			value = {
 				value = var:mana
-				max = var:max_mana
+				#max = var:max_mana # leave commented! see above!
 				min = 0
 			}
 		}
