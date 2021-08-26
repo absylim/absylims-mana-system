@@ -3,24 +3,9 @@
 AMS_mana_events.001 = {
 	hidden = yes
 	immediate = {
-		if = { #change mana
-			limit = { var:mana.compare_value < var:max_mana.compare_value }
-			change_mana = { VALUE = var:mana_gen }
-		}
-		if = { #check against max mana
-			limit = { var:mana.compare_value > var:max_mana.compare_value }
-			set_variable = {
-				name = mana
-				value = var:max_mana
-			}
-		}
-		if = { #check for negative mana
-			limit = { var:mana.compare_value < 0 }
-			set_variable = {
-				name = mana
-				value = 0
-			}
-		}
+		# the effect clamps to 0 < mana < max_mana
+		change_mana = { VALUE = var:mana_gen }
+
 		if = { #Infinite mana trait
 			limit = { has_trait = infinite_mana }
 			set_variable = {
