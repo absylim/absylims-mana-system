@@ -1,12 +1,113 @@
-﻿quarterly_playable_pulse = {
-	trigger = { has_trait = mana }
+﻿yearly_global_pulse = {
+	on_actions = {
+		yearly_mana_pulse
+	}
+}
 
+yearly_mana_pulse = {
+	effect = {
+		every_living_character = {
+			limit = { has_trait = mana }
+			trigger_event = { on_action = yearly_mana_gen_setup }
+		}
+	}
+}
+
+yearly_mana_gen_setup = {
+	on_actions = {
+		monthly_mana_gen_setup_31
+		delay = { days = 31 }
+		monthly_mana_gen_setup_28
+		delay = { days = 59 }
+		monthly_mana_gen_setup_31
+		delay = { days = 90 }
+		monthly_mana_gen_setup_30
+		delay = { days = 120 }
+		monthly_mana_gen_setup_31
+		delay = { days = 151 }
+		monthly_mana_gen_setup_30
+		delay = { days = 181 }
+		monthly_mana_gen_setup_31
+		delay = { days = 212 }
+		monthly_mana_gen_setup_31
+		delay = { days = 243 }
+		monthly_mana_gen_setup_30
+		delay = { days = 273 }
+		monthly_mana_gen_setup_31
+		delay = { days = 304 }
+		monthly_mana_gen_setup_30
+		delay = { days = 334 }
+		monthly_mana_gen_setup_31
+	}
+}
+
+monthly_mana_gen_setup_28 = {
+	on_actions = {
+		weekly_mana_gen_setup
+		delay = { days = 7 }
+		weekly_mana_gen_setup
+		delay = { days = 14 }
+		weekly_mana_gen_setup
+		delay = { days = 21 }
+		weekly_mana_gen_setup
+	}
+}
+
+monthly_mana_gen_setup_30 = {
+	on_actions = {
+		weekly_mana_gen_setup
+		delay = { days = 7 }
+		weekly_mana_gen_setup
+		delay = { days = 14 }
+		weekly_mana_gen_setup
+		delay = { days = 21 }
+		weekly_mana_gen_setup
+		delay = { days = 28 }
+		daily_mana_gen_setup
+		delay = { days = 29 }
+		daily_mana_gen_setup
+	}
+}
+
+monthly_mana_gen_setup_31 = {
+	on_actions = {
+		weekly_mana_gen_setup
+		delay = { days = 7 }
+		weekly_mana_gen_setup
+		delay = { days = 14 }
+		weekly_mana_gen_setup
+		delay = { days = 21 }
+		weekly_mana_gen_setup
+		delay = { days = 28 }
+		daily_mana_gen_setup
+		delay = { days = 29 }
+		daily_mana_gen_setup
+		delay = { days = 30 }
+		daily_mana_gen_setup
+	}
+}
+
+weekly_mana_gen_setup = {
+	on_actions = {
+		daily_mana_gen_setup
+		delay = { days = 1 }
+		daily_mana_gen_setup
+		delay = { days = 2 }
+		daily_mana_gen_setup
+		delay = { days = 3 }
+		daily_mana_gen_setup
+		delay = { days = 4 }
+		daily_mana_gen_setup
+		delay = { days = 5 }
+		daily_mana_gen_setup
+		delay = { days = 6 }
+		daily_mana_gen_setup
+	}
+}
+
+daily_mana_gen_setup = {
 	events = {
-		AMS_mana_events.001
-		delay = { months = 1 }
-		AMS_mana_events.001
-		delay = { months = 2 }
-		AMS_mana_events.001
+		AMS_mana_events.004
 	}
 }
 
