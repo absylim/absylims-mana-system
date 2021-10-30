@@ -1,4 +1,0 @@
-AMS_magic_interactions = {
-	index = 9
-	desc = "AMS_INTERACTIONS"
-}

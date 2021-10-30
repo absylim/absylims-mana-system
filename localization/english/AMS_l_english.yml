@@ -16,5 +16,4 @@
  GAIN_MANA_EFFECT:0 "Gains Mana $VALUE|V0$"
  LOSE_MANA_EFFECT:0 "Loses Mana $VALUE|V0$"
 #interactions
- AMS_magic_interactions:0 "Magic"
- AMS_INTERACTIONS:0 "Magic Actions"
+ interaction_category_uncategorized: "Magic"
